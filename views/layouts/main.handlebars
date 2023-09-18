@@ -1,56 +1,62 @@
-<html lang='en'>
+<!DOCTYPE html>
+<html lang="en">
 
-  <head>
-    <meta charset='UTF-8' />
-    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-    <title>MVC Tech Blog</title>
-    <link rel='stylesheet' href='/css/jass.css' />
-    <link rel='stylesheet' href='/css/style.css' />
-  </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Link</title>
+    <link rel="stylesheet" href="/css/jass.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
 
-  <body>
-    <div class='flex-column justify-space-around'>
-      <header class='header'>
-        <nav class='header-nav'>
-          <ul>
-            <li><a href='/'>Homepage</a></li>
-
-            <li><a href='/profile'>Dashboard</a></li>
-
-            <li>
-              <!-- Conditionally render login or logout links -->
-              {{#if logged_in}}
-                <button class='button' id='logout'>Logout</button>
-              {{else}}
-                <a href='/login'>Login</a>
-              {{/if}}
-            </li>
-          </ul>
-        </nav>
-
-        <h1 class='main-title'>
-          <a href='/'>MVC Tech Blog</a>
+<body class="site">
+    <header class="header">
+        <h1>
+            {{!-- <span role="img" aria-label="construction">🏗️</span> --}}
+            <a href="/"><span id="logo">BUILD LINK</span></a>
+            <p id="slogan">Making contracting easier</p>
         </h1>
-      </header>
-      <main class='container container-fluid mt-5'>
-        <!-- Render the sub layout -->
-        {{{body}}}
-      </main>
-      <footer class="footer">
-        <div class="footer-content">
-          <p>&copy; 2023 MVC Tech Blog | Thanks for visiting!</p>
-          <ul class="footer-links">
-            <li><a href="https://github.com/SKhai77/mvc-tech-blog" target="_blank">| GitHub Link |</a></li>
-            {{!-- Add more links --}}
-          </ul>
-        </div>
-      </footer>
-    </div>
+        <nav class="nav">
+            {{#if logged_in}}
+            Welcome, {{user_name}}
+            <a href="/">Home</a> |
+            <a href="/joblistings">Job Listings</a> |
+            <a href="/profile">Dashboard</a> |
+            <a href="/about">About Us</a> |
+            <a href="/contact">Contact Us</a> |
+            <button class="no-button" id="logout">Log out</button>
+            {{else}}
+            <a href="/">Home</a> |
+            <a href="/joblistings">Job Listings</a> |
+            <a href="/about">About Us</a> |
+            <a href="/contact">Contact Us</a> |
+            <a href="/login">Log In/Sign Up</a>            
+            {{/if}}
+        </nav>
+    </header>
 
-    <!-- Render script for logged-in users only -->
+    <main class="container container-fluid mt-5">
+        <!-- Render the sub layout -->
+        {{{body}}}        
+    </main>
+
+    <footer class="footer">
+        <div id="footer-links">
+            <a href="/">Home</a> 
+            <a href="/joblistings">Job Listings</a> 
+            <a href="/about">About Us</a> 
+            <a href="/contact">Contact Us</a> 
+            <a href="/login">Log In/Sign Up</a>            
+        </div>
+        <div id="footer-info">
+            <p>&copy; 2023 Build Link</p>
+        </div>
+    </footer>
+
     {{#if logged_in}}
-      <script src='/js/logout.js'></script>
+    <script src="/js/logout.js"></script>
     {{/if}}
-  </body>
+
+</body>
 
 </html>

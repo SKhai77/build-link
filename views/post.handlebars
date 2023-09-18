@@ -1,0 +1,46 @@
+<div class='post-container'>
+  <div class='post-header'>
+    <h2 class='post-title'>{{post.title}}
+      <div class='post-info'>
+        <span class='post-author'>Created by {{post.user.username}}</span>
+        <span class='post-date'>on {{format_date post.date_created}}</span>
+      </div>
+    </h2>
+  </div>
+
+  <div class='post-content'>{{post.content}}</div>
+</div>
+
+<!-- Add spacing between the post and the comment form -->
+<div class='comment-form-container mt-4'>
+  <!-- Comment Form -->
+  <form id='comment-form'>
+    <div class='form-group'>
+      <input placeholder='Comment...' class='comment-input' />
+      <!-- {{post.id}} can be used here as needed -->
+      <button id='comment-button' data-post-id='{{post.id}}'>Comment</button>
+      <!-- Add a hidden input to store user_id -->
+      <input type='hidden' id='user-id' data-user-id='{{user_id}}' />
+    </div>
+  </form>
+</div>
+
+<!-- Loop through comments that belong to this post and display their comment body -->
+<section class='comment-list mt-4'>
+  {{#each post.comments}}
+    {{!-- Logging: {{log 'looping through comments'}} --}}
+    <div class="comment-container">
+    <div class='row mb-2 comment'>
+      <div class='col-md-8'>
+        <span class='comment-text'>{{this.commentBody}}</span>
+      </div>
+      <div class="col-md-8 mt-1 ml-5">
+        <span class='comment-author'>- Comment by {{this.username}}</span>
+      </div>
+    </div>
+    </div>
+  {{/each}}
+</section>
+
+<!-- Add the script source for comment.js -->
+<script src='/js/comment.js'></script>

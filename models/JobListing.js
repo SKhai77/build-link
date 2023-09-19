@@ -1,15 +1,23 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Post extends Model {}
+class JobListing extends Model {}
 
-Post.init(
+JobListing.init(
   {
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    },
+    contractor_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
     },
     title: {
       type: DataTypes.STRING,
@@ -34,11 +42,11 @@ Post.init(
     },
     post_date: {
       type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW,
+      allowNull: false,
     },
     status: {
       type: DataTypes.STRING,
-      defaultValue: 'Open',
+      allowNull: false,
     },
     start_date: {
       type: DataTypes.DATE,
@@ -46,22 +54,14 @@ Post.init(
     deadline: {
       type: DataTypes.DATE,
     },
-    contractor_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'User',
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Post',
+    modelName: 'JobListing',
   }
 );
 
-module.exports = Post;
+module.exports = JobListing;

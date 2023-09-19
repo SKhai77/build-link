@@ -1,0 +1,21 @@
+{{> main}}
+
+<div class="container mt-5">
+  {{#if job}}
+    <h1>{{job.title}}</h1>
+    <p><strong>Company:</strong> {{job.company}}</p>
+    <p><strong>Location:</strong> {{job.location}}</p>
+    <p><strong>Status:</strong> {{job.status}}</p>
+    <p><strong>Budget:</strong> ${{job.budget}}</p>
+    <p><strong>Start Date:</strong> {{job.start_date}}</p>
+    <p><strong>Deadline:</strong> {{job.deadline}}</p>
+    <h2>Description</h2>
+    <p>{{job.description}}</p>
+    <h2>Skills Required</h2>
+    <p>{{job.skills_required}}</p>
+    <h2>Posted By</h2>
+    <p>{{job.Contractors.company_name}}</p>
+  {{else}}
+    <p>Job listing not found.</p>
+  {{/if}}
+</div>

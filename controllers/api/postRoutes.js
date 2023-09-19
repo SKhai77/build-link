@@ -1,4 +1,3 @@
-// Import necessary modules and initialize the Express.js router
 const router = require('express').Router();
 const { Post } = require('../../models');
 const withAuth = require('../../utils/auth');
@@ -6,7 +5,6 @@ const withAuth = require('../../utils/auth');
 // GET route to render the edit post page
 router.get('/edit-post/:id', withAuth, async (req, res) => {
   try {
-
     // Find the post by ID
     const postData = await Post.findByPk(req.params.id);
 
@@ -26,7 +24,7 @@ router.get('/edit-post/:id', withAuth, async (req, res) => {
   }
 });
 
-// POST route to create a new post
+// Create a new post
 router.post('/', withAuth, async (req, res) => {
   try {
     // Create a new post with the data from the request body
@@ -35,13 +33,13 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    res.status(201).json(newPost); 
+    res.status(201).json(newPost);
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-// PUT route to edit/update a post by ID
+// Update a post by ID
 router.put('/:id', withAuth, async (req, res) => {
   try {
     // Find the post by ID and update its content
@@ -58,7 +56,7 @@ router.put('/:id', withAuth, async (req, res) => {
     );
 
     if (!updatedPost[0]) {
-      res.status(404).json({ message: 'No post found with this id!' });
+      res.status(404).json({ message: 'No post found with this id' });
       return;
     }
 
@@ -68,7 +66,7 @@ router.put('/:id', withAuth, async (req, res) => {
   }
 });
 
-// DELETE route to delete a post by ID
+// Delete a post by ID
 router.delete('/:id', withAuth, async (req, res) => {
   try {
     // Delete a post where the ID matches and the user_id belongs to the logged-in user
@@ -80,7 +78,7 @@ router.delete('/:id', withAuth, async (req, res) => {
     });
 
     if (!postData) {
-      res.status(404).json({ message: 'No post found with this id!' });
+      res.status(404).json({ message: 'No post found with this id' });
       return;
     }
 
@@ -90,5 +88,4 @@ router.delete('/:id', withAuth, async (req, res) => {
   }
 });
 
-// Export the router
 module.exports = router;

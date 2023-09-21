@@ -1,13 +1,36 @@
 // Import necessary modules and initialize the Express.js router
 const router = require('express').Router();
-const { JobListing, User } = require('../models');
+const { Post, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
+
+// GET route to render the edit post page
+router.get('/edit-post/:id', withAuth, async (req, res) => {
+  try {
+
+    // Find the post by ID
+    const postData = await Post.findByPk(req.params.id);
+
+    if (!postData) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+
+    // Render the edit-post.handlebars view and pass the post data
+    res.render('edit-post', {
+      post: postData.get({ plain: true }),
+      logged_in: req.session.logged_in,
+      editing: true, // Set editing to true when rendering the edit post page
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 // Define a route to handle GET requests for the homepage
 router.get('/', async (req, res) => {
   try {
-    // Get all job listings and JOIN with user data
-    const jobListingsData = await JobListing.findAll({
+    // Get all posts and JOIN with user data
+    const postData = await Post.findAll({
       include: [
         {
           model: User,
@@ -17,13 +40,11 @@ router.get('/', async (req, res) => {
     });
 
     // Serialize data so the template can read it
-    const jobListings = jobListingsData.map((jobListing) =>
-      jobListing.get({ plain: true })
-    );
+    const posts = postData.map((post) => post.get({ plain: true }));
 
     // Pass serialized data and session flag into the template
     res.render('homepage', {
-      jobListings,
+      posts,
       logged_in: req.session.logged_in,
       user_name: req.session.user_name,
     });
@@ -32,23 +53,30 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Display a specific job listing
-router.get('/job/:id', async (req, res) => {
+// Display a specific post and its associated comments
+router.get('/post/:id', async (req, res) => {
   try {
-    // Get the job listing with associated user data
-    const jobListingData = await JobListing.findByPk(req.params.id, {
+    // Get the post with associated user and comments
+    const postData = await Post.findByPk(req.params.id, {
       include: [
         {
           model: User,
           attributes: ['username'],
         },
+        {
+          model: Comment,
+        },
       ],
     });
 
-    const jobListing = jobListingData.get({ plain: true });
+    const post = postData.get({ plain: true });
 
-    res.render('job', {
-      jobListing,
+    // Pass user_id from the session to the template
+    const user_id = req.session.user_id;
+
+    res.render('post', {
+      post,
+      user_id, // Pass user_id to the template
       logged_in: req.session.logged_in,
       user_name: req.session.user_name,
     });
@@ -58,11 +86,25 @@ router.get('/job/:id', async (req, res) => {
   }
 });
 
-router.get('/profile', (req, res) => {
-  res.render('profile', {
-    logged_in: req.session.logged_in,
-    user_name: req.session.user_name,
-  });
+// Use withAuth middleware to prevent access to route
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    // Find the logged-in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('profile', {
+      ...user,
+      logged_in: true,
+      user_name: req.session.user_name,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 router.get('/login', (req, res) => {
@@ -73,44 +115,6 @@ router.get('/login', (req, res) => {
   }
 
   res.render('login');
-});
-
-// Include routes for creating and editing job listings (withAuth middleware ensures only logged-in users can access)
-router.get('/create-job', withAuth, (req, res) => {
-  res.render('create-job', {
-    logged_in: req.session.logged_in,
-    user_name: req.session.user_name,
-  });
-});
-
-router.get('/edit-job/:id', withAuth, async (req, res) => {
-  try {
-    // Get the job listing data for editing
-    const jobListingData = await JobListing.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['username'],
-        },
-      ],
-    });
-
-    if (!jobListingData) {
-      res.status(404).json({ message: 'No job listing found with this id!' });
-      return;
-    }
-
-    const jobListing = jobListingData.get({ plain: true });
-
-    res.render('edit-job', {
-      jobListing,
-      logged_in: req.session.logged_in,
-      user_name: req.session.user_name,
-    });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json(err);
-  }
 });
 
 // Export the router

@@ -1,14 +1,17 @@
+// Import necessary modules
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
+const sequelize = require('../config/connection');
 
+// Define the User model class that extends Sequelize's Model class
 class User extends Model {
-  // Add a method to check the provided password against the hashed password in the database
+  // Method to check if a provided password matches the stored password
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
 }
 
+// Initialize the User model with its fields and configurations
 User.init(
   {
     id: {
@@ -20,41 +23,33 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: true, // Ensure that usernames are unique
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
+      unique: true, // Ensure that email addresses are unique
       validate: {
-        isEmail: true,
+        isEmail: true, // Validate that the email field follows the email format
       },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [8],
+        len: [8], // Validate that passwords are at least 8 characters long
       },
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    contact_info: {
-      type: DataTypes.STRING,
-      allowNull: true,
     },
   },
   {
     hooks: {
-      // Set up beforeCreate lifecycle "hook" functionality
-      async beforeCreate(newUserData) {
+      beforeCreate: async (newUserData) => {
+        // Hash the password before creating a new user
         newUserData.password = await bcrypt.hash(newUserData.password, 10);
         return newUserData;
       },
-      // Set up beforeUpdate lifecycle "hook" functionality
-      async beforeUpdate(updatedUserData) {
+      beforeUpdate: async (updatedUserData) => {
+        // Hash the password before updating the user's password
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
       },
@@ -63,13 +58,9 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'User',
+    modelName: 'user',
   }
 );
 
-User.hasMany(Post, {
-  foreignKey: 'contractor_id',
-  onDelete: 'CASCADE',
-});
-
+// Export the User model
 module.exports = User;

@@ -44,13 +44,6 @@ app.get('/about', (req, res) => {
   res.render('about'); // This renders the "about.handlebars" template
 });
 
-app.get('/contact', (req, res) => {
-  res.render('contact'); // This renders the "contact.handlebars" template
-});
-
-
-app.use('/', require('./controllers/api/contactRoutes'));
-
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {

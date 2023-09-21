@@ -44,6 +44,16 @@ app.get('/about', (req, res) => {
   res.render('about'); // This renders the "about.handlebars" template
 });
 
+app.get('/joblisting', (req, res) => {
+  res.render('joblisting'); // This renders the "joblisting.handlebars" template
+});
+
+
+app.get('/contact', (req, res) => {
+  res.render('contact'); // This renders the "contact.handlebars" template
+});
+
+
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {

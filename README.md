@@ -40,6 +40,7 @@ Heroku (for deployment)
 
 ## Instilation and Use
 Users should be able to make or create an account on Build-Link which will then give them access to create or apply of job listings. To view the backend, you can clone the repo down to you local machine and run npm install to install the necessary dependencies and packages to run the application. 
+Visit the live site here: https://build-link-10beabbadf73.herokuapp.com/
 
 ## Collaborators
 The four people that created this application were Juan Grillo Morales, Sian Khai, Kyndall Carothers, and Sarah Lepine. Through collaborated effort, they created the Build-Link website. Work was devided as follows:

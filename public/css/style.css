@@ -157,6 +157,10 @@ body {
   flex-direction: column;
 }
 
+.form-textarea {
+  width: 400px;
+}
+
 .footer {
   background-color: #333;
   color: #fc7f20;

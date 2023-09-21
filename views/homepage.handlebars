@@ -1,4 +1,5 @@
-<div class="search-container">
+<div class="container">
+  
   <form id="search-form" method="GET" action="/search">
     <input
       type="text"
@@ -12,9 +13,9 @@
       name="location"
       placeholder="Location"
     />
-    <button type="submit" class="btn btn-primary">Search</button>
+    <button type="submit" class="btn btn-primary" id="search-button">Search</button>
   </form>
-</div>
+
 
 {{#each jobListings as |jobListing|}}
   <div class="job-listing-container">
@@ -48,4 +49,5 @@
     </div>
   </div>
 {{/each}}
+</div>
 <script src="/js/logout.js"></script>

@@ -20,14 +20,14 @@
             {{#if logged_in}}
             Welcome, {{user_name}}
             <a href="/">Home</a> |
-            <a href="/joblistings">Job Listings</a> |
+            <a href="/joblisting">Job Listings</a> |
             <a href="/profile">Dashboard</a> |
             <a href="/about">About Us</a> |
             <a href="/contact">Contact Us</a> |
             <button class="no-button" id="logout">Log out</button>
             {{else}}
             <a href="/">Home</a> |
-            <a href="/joblistings">Job Listings</a> |
+            <a href="/joblisting">Job Listings</a> |
             <a href="/about">About Us</a> |
             <a href="/contact">Contact Us</a> |
             <a href="/login">Log In/Sign Up</a>            
@@ -35,7 +35,7 @@
         </nav>
     </header>
 
-    <main class="container container-fluid mt-5">
+    <main class="container container-fluid">
         <!-- Render the sub layout -->
         {{{body}}}        
     </main>

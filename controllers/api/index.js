@@ -3,6 +3,8 @@ const router = require('express').Router();
 const userRoutes = require('./userRoutes');
 const postRoutes = require('./postRoutes');
 const commentRoutes = require('./commentRoutes');
+const contactRoutes = require('./contactRoutes');
+// const aboutRoutes = require('./aboutRoutes');
 
 // Use the userRoutes for '/users' endpoint
 router.use('/users', userRoutes);
@@ -12,6 +14,10 @@ router.use('/posts', postRoutes);
 
 // Use the commentRoutes for '/comments' endpoint
 router.use('/comments', commentRoutes);
+
+router.use('/contact', contactRoutes);
+
+// router.use('/about', aboutRoutes);
 
 // Export the router
 module.exports = router;

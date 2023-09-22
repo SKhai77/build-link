@@ -1,6 +1,6 @@
 // Import necessary modules and initialize the Express.js router
 const router = require('express').Router();
-const { Post, User, Comment } = require('../models');
+const { Post, User, Comment, } = require('../models');
 const withAuth = require('../utils/auth');
 
 // GET route to render the edit post page
@@ -116,6 +116,21 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+// Add a route for the "About Us" page
+router.get('/about', (req, res) => {
+  res.render('about'); // This renders the "about.handlebars" template
+});
+
+router.get('/api/joblisting', (req, res) => {
+  res.render('joblisting'); // This renders the "joblisting.handlebars" template
+});
+
+
+router.get('/contact', (req, res) => {
+  res.render('contact'); // This renders the "contact.handlebars" template
+});
+
 
 // Export the router
 module.exports = router;

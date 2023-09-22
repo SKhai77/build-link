@@ -1,7 +1,6 @@
 <div class="joblisting-container">
   <div class='col-md-12'>
 
-  <h1>Job Listings</h1>
   <form id="search-form" method="GET" action="/search">
     <input
       type="text"
@@ -18,6 +17,8 @@
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
 </div>
+
+  <h1 class="text-center">Job Listings</h1>
 
 {{#each jobListings as |jobListing|}}
   <div class="job-listing-container">

@@ -1,13 +1,4 @@
-/* Reset some default styles */
-/* body,
-h1,
-h2,
-h3,
-p {
-  margin: 0;
-  padding: 0;
-} */
-
+/* Style for the body */
 body {
   font-family: Arial, sans-serif;
   background-color: #f0f0f0;
@@ -17,10 +8,6 @@ body {
   align-self: center;
   flex-direction: column;
   min-height: 100vh;
-}
-
-.site {
-  flex: 1;
 }
 
 .header {
@@ -68,10 +55,6 @@ body {
 #logout:hover {
   background-color: #fc7f20;
   text-decoration: none;
-}
-
-.nav {
-  margin-top: 10px;
 }
 
 .nav a {
@@ -137,10 +120,8 @@ body {
 .container {
   flex: 1;
   display: flex;
-  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  margin-top: 10px;
 }
 
 .form-textarea {
@@ -174,12 +155,15 @@ body {
   .container {
     flex: 1;
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     margin-top: -3px;
   }
-  
+
+  .about {
+    margin-top: 20px;
+  }
+
   /* Styles for the Search Forms */
   #search-form {
     display: flex;
@@ -249,7 +233,6 @@ body {
     justify-content: center;
     flex-wrap: nowrap;
     align-items: center;
-    margin-top: 5%;
   }
 
   #search-keywords,
@@ -312,7 +295,6 @@ body {
     justify-content: center;
     flex-wrap: nowrap;
     align-items: center;
-    margin-top: 5%;
   }
 
   #search-keywords,
@@ -368,14 +350,13 @@ body {
   header {
     text-align: center;
   }
-  
+
   /* Styles for the Search Forms */
   #search-form {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     align-items: center;
-    margin-top: 5%;
   }
 
   #search-keywords,

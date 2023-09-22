@@ -4,7 +4,7 @@ const userRoutes = require('./userRoutes');
 const postRoutes = require('./postRoutes');
 const commentRoutes = require('./commentRoutes');
 const contactRoutes = require('./contactRoutes');
-// const aboutRoutes = require('./aboutRoutes');
+// const joblistingRoutes = require('./joblistingRoutes');
 
 // Use the userRoutes for '/users' endpoint
 router.use('/users', userRoutes);
@@ -17,7 +17,7 @@ router.use('/comments', commentRoutes);
 
 router.use('/contact', contactRoutes);
 
-// router.use('/about', aboutRoutes);
+// router.use('/joblisting', joblistingRoutes);
 
 // Export the router
 module.exports = router;

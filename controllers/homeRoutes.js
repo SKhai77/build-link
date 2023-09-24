@@ -122,7 +122,7 @@ router.get('/about', (req, res) => {
   res.render('about'); // This renders the "about.handlebars" template
 });
 
-router.get('/api/joblisting', (req, res) => {
+router.get('/joblisting', (req, res) => {
   res.render('joblisting'); // This renders the "joblisting.handlebars" template
 });
 

@@ -1,17 +1,17 @@
 [
   {
-    "title": "MVC Basics in Web Dev",
-    "content": "Explore Model-View-Controller (MVC) in web development, its roles, benefits, and impact on code organization.",
+    "title": "Skilled Carpenter Needed",
+    "content": "We are looking for an experienced carpenter to join our construction team. Must have expertise in framing, finishing, and general carpentry work. Competitive pay and benefits.",
     "user_id": "1"
   },
   {
-    "title": "Implementing MVC in JavaScript Frameworks",
-    "content": "Learn how MVC is implemented in Angular, React, and Vue.js, with code examples for clarity.",
+    "title": "Concrete Finisher Position",
+    "content": "We have an immediate opening for a concrete finisher. Experience with concrete pouring, finishing, and leveling required. Join our team and be part of exciting construction projects.",
     "user_id": "2"
   },
   {
-    "title": "MVC vs. MVVM: A Comparative Analysis",
-    "content": " Discover differences between MVC and MVVM, helping you choose the right architecture for your projects.",
+    "title": "Construction Laborer Wanted",
+    "content": "Looking for a motivated construction laborer to assist with various tasks on our job sites. No experience necessary, but a strong work ethic and willingness to learn are essential.",
     "user_id": "3"
   }
 ]

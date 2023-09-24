@@ -18,7 +18,32 @@
   </form>
 </div>
 
-{{#each jobListings as |jobListing|}}
+{{#each posts as |post|}}
+  <div class='post-container'>
+    <!-- container class for styling -->
+    <div class='row mb-4 post'>
+      <div class='col-md-12'>
+
+        <h2 class='post-title'>
+          
+          <a href='/post/{{post.id}}'>{{post.title}}</a>
+          <div class='post-info'>
+            <span class='post-author'>Created by {{post.user.username}}</span>           
+            <span class='post-date'>on {{format_date post.date_created}}</span>
+            
+          </div>
+        </h2>
+
+        <p class='post-content'>
+          {{post.content}}
+        </p>
+
+      </div>
+    </div>
+  </div>
+{{/each}}
+
+{{!-- {{#each jobListings as |jobListing|}}
   <div class="job-listing-container">
     <!-- container class for styling -->
     <div class="row mb-4 job-listing">
@@ -26,7 +51,7 @@
 
         <h2 class="job-title">
           <a
-            href="/joblistings/{{jobListing.job_id}}"
+            href="/joblisting/{{jobListing.job_id}}"
             class="job-title-link"
           >{{jobListing.title}}</a>
         </h2>
@@ -49,5 +74,5 @@
       </div>
     </div>
   </div>
-{{/each}}
+{{/each}} --}}
 <script src="/js/logout.js"></script>

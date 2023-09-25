@@ -10,6 +10,7 @@ body {
   min-height: 100vh;
 }
 
+/* Style for header */
 .header {
   background-color: #333;
   color: #fc7f20;
@@ -33,6 +34,7 @@ body {
   margin: 0 10px;
 }
 
+/* Style for the slogan */
 #slogan {
   font-style: italic;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
@@ -40,6 +42,7 @@ body {
   color: #f0f0f0;
 }
 
+/* Style for the logo */
 #logo {
   background-color: #f0f0f0;
   padding: 3px 20px;
@@ -47,6 +50,7 @@ body {
   box-shadow: 5px 10px 50px;
 }
 
+/* Style for the logout */
 #logout {
   background-color: #f0f0f0;
   text-decoration: none;
@@ -57,6 +61,7 @@ body {
   text-decoration: none;
 }
 
+/* Style for the nav */
 .nav a {
   color: #f0f0f0;
   text-decoration: none;
@@ -69,6 +74,7 @@ body {
   margin: 0 10px;
 }
 
+ /* Styles for the Search Forms */
 #search-form {
   display: flex;
   flex-wrap: wrap;
@@ -94,7 +100,17 @@ body {
   width: 200px;
 }
 
-.job-listing-container {
+/* Style for post info */
+.post-info {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.post-info .date {
+  font-style: italic;
+}
+
+/* .job-listing-container {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 15px;
@@ -115,8 +131,9 @@ body {
 
 .job-description {
   font-size: 16px;
-}
+} */
 
+/* Style for container */
 .container {
   flex: 1;
   display: flex;
@@ -124,25 +141,17 @@ body {
   flex-direction: column;
 }
 
+/* Style for textarea form */
 .form-textarea {
   width: 400px;
 }
 
+/* Style for footer */
 .footer {
   background-color: #333;
   color: #fc7f20;
   text-align: center;
   padding: 10px 0;
-}
-
-#footer-links a {
-  color: #f0f0f0;
-  text-decoration: none;
-  margin: 0 10px;
-}
-
-#footer-links a:hover {
-  text-decoration: underline;
 }
 
 /* Extra Small Smartphones) */

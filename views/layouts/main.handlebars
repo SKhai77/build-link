@@ -18,12 +18,12 @@
         </h1>
         <nav class="nav">
             {{#if logged_in}}
-            Welcome, {{user_name}}
+            {{!-- Welcome, {{username}} --}}
             <a href="/">Home</a> |
-            <a href="/joblisting">Job Listings</a> |
+            {{!-- <a href="/joblisting">Job Listings</a> | --}}
             <a href="/profile">Dashboard</a> |
-            <a href="/about">About Us</a> |
-            <a href="/contact">Contact Us</a> |
+            {{!-- <a href="/about">About Us</a> |
+            <a href="/contact">Contact Us</a> | --}}
             <button class="no-button" id="logout">Log out</button>
             {{else}}
             <a href="/">Home</a> |
@@ -41,13 +41,7 @@
     </main>
 
     <footer class="footer">
-        <div id="footer-links">
-            <a href="/">Home</a> 
-            <a href="/joblistings">Job Listings</a> 
-            <a href="/about">About Us</a> 
-            <a href="/contact">Contact Us</a> 
-            <a href="/login">Log In/Sign Up</a>            
-        </div>
+        Thank you for visiting!
         <div id="footer-info">
             <p>&copy; 2023 Build Link</p>
         </div>

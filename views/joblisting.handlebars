@@ -28,7 +28,7 @@
             <h2 class='post-title'>
               <a href='/post/{{post.id}}'>{{post.title}}</a>
               <div class='post-info'>
-                <span class='post-author'>Created by {{post.user.username}}</span>
+                <span class='post-author'>Posted by {{post.user.username}}</span>
                 <span class='post-date'>on {{format_date post.date_created}}</span>
               </div>
             </h2>
@@ -36,7 +36,7 @@
               {{post.content}}
             </p>
             <p class='post-location'>
-              {{post.location}}
+              {{{location}}}
             </p>
           </div>
         </div>
@@ -46,6 +46,3 @@
 </div>
 
 
-
-
-<script src="/js/logout.js"></script>

@@ -30,6 +30,10 @@ Post.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
+    // 'location' stores the location of the post as a string
+    location: {
+      type: DataTypes.STRING,
+    },
     // 'user_id' is a foreign key referencing the 'user' model's 'id' field
     user_id: {
       type: DataTypes.INTEGER,

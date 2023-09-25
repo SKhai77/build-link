@@ -5,15 +5,16 @@ const newFormHandler = async (event) => {
   // Get the title and content values from the form
   const title = document.querySelector('#post-title').value.trim();
   const content = document.querySelector('#post-desc').value.trim();
+  const location = document.querySelector('post-location').value.trim();
 
   // Get the user_id from the hidden input field
   const user_id = document.querySelector('#user-id').value;
 
-  if (title && content) {
+  if (title && content && location) {
     // Send a POST request to create a new post
     const response = await fetch(`/api/posts`, {
       method: 'POST',
-      body: JSON.stringify({ title, content, user_id }), // Include user_id
+      body: JSON.stringify({ title, content, user_id, location }), 
       headers: {
         'Content-Type': 'application/json',
       },
@@ -72,6 +73,7 @@ document
     // Get the updated title and content values from the form
     const title = document.querySelector('#edit-post-title').value.trim();
     const content = document.querySelector('#edit-post-content').value.trim();
+    const location = document.querySelector('#edit-post-location').value.trim();
 
     // Get the post ID from the URL
     const postId = window.location.pathname.split('/').pop();
@@ -80,7 +82,7 @@ document
       // Send a PUT request to update the post
       const response = await fetch(`/api/posts/${postId}`, {
         method: 'PUT',
-        body: JSON.stringify({ title, content }),
+        body: JSON.stringify({ title, content, location }),
         headers: {
           'Content-Type': 'application/json',
         },

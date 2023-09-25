@@ -2,16 +2,19 @@
   {
     "title": "Skilled Carpenter Needed",
     "content": "We are looking for an experienced carpenter to join our construction team. Must have expertise in framing, finishing, and general carpentry work. Competitive pay and benefits.",
-    "user_id": "1"
+    "user_id": "1",
+    "location": "789 My Way, Miami, FL 33101"
   },
   {
     "title": "Concrete Finisher Position",
     "content": "We have an immediate opening for a concrete finisher. Experience with concrete pouring, finishing, and leveling required. Join our team and be part of exciting construction projects.",
-    "user_id": "2"
+    "user_id": "2",
+    "location": "123 People Dr, Dallas, TX 75231"
   },
   {
     "title": "Construction Laborer Wanted",
     "content": "Looking for a motivated construction laborer to assist with various tasks on our job sites. No experience necessary, but a strong work ethic and willingness to learn are essential.",
-    "user_id": "3"
+    "user_id": "3",
+    "location": "456 Your Way, New York, NY 10001"
   }
 ]

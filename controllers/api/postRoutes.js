@@ -6,7 +6,6 @@ const withAuth = require('../../utils/auth');
 // GET route to render the edit post page
 router.get('/edit-post/:id', withAuth, async (req, res) => {
   try {
-
     // Find the post by ID
     const postData = await Post.findByPk(req.params.id);
 
@@ -35,7 +34,7 @@ router.post('/', withAuth, async (req, res) => {
       user_id: req.session.user_id,
     });
 
-    res.status(201).json(newPost); 
+    res.status(201).json(newPost);
   } catch (err) {
     res.status(400).json(err);
   }

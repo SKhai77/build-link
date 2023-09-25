@@ -1,53 +1,51 @@
-<div class="container">
-  
-  <form id="search-form" method="GET" action="/search">
+<div class='container'>
+  <form id='search-form' method='GET' action='/search'>
     <input
-      type="text"
-      id="search-keywords"
-      name="keywords"
-      placeholder="Keywords"
+      type='text'
+      id='search-keywords'
+      name='keywords'
+      placeholder='Keywords'
     />
     <input
-      type="text"
-      id="search-location"
-      name="location"
-      placeholder="Location"
+      type='text'
+      id='search-location'
+      name='location'
+      placeholder='Location'
     />
-    <button type="submit" class="btn btn-primary" id="search-button">Search</button>
+    <button
+      type='submit'
+      class='btn btn-primary'
+      id='search-button'
+    >Search</button>
   </form>
 
+  {{#if searchResults}}
+    {{#each searchResults as |post|}}
+      <div class='post-container'>
+        <!-- container class for styling -->
+        <div class='row mb-4 post'>
+          <div class='col-md-12'>
 
-{{#each jobListings as |jobListing|}}
-  <div class="job-listing-container">
-    <!-- container class for styling -->
-    <div class="row mb-4 job-listing">
-      <div class="col-md-12">
-
-        <h2 class="job-title">
-          <a
-            href="/joblistings/{{jobListing.job_id}}"
-            class="job-title-link"
-          >{{jobListing.title}}</a>
-        </h2>
-
-        <div class="job-info">
-          <span class="job-contractor">Contractor:
-            {{jobListing.contractor.company_name}}</span>
-          <span class="job-location">Location: {{jobListing.location}}</span>
-          <span class="job-skills">Skills Required:
-            {{jobListing.skills_required}}</span>
-          <span class="job-budget">Budget: ${{jobListing.budget}}</span>
-          <span class="job-post-date">Posted on:
-            {{format_date jobListing.post_date}}</span>
+            <h2 class='post-title'>
+              <a href='/post/{{post.id}}'>{{post.title}}</a>
+              <div class='post-info'>
+                <span class='post-author'>Created by
+                  {{post.user.username}}</span>
+                <span class='post-date'>on
+                  {{format_date post.date_created}}</span>
+              </div>
+            </h2>
+            <p class='post-content'>
+              {{post.content}}
+            </p>
+            <p class='post-location'>
+              {{post.location}}
+            </p>
+          </div>
         </div>
-
-        <p class="job-description">
-          {{jobListing.description}}
-        </p>
-
       </div>
-    </div>
-  </div>
-{{/each}}
+    {{/each}}
+  {{/if}}
 </div>
-<script src="/js/logout.js"></script>
+
+<script src='/js/logout.js'></script>

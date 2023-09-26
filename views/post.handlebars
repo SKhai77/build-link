@@ -1,4 +1,6 @@
+<div class="container">
 <div class='post-container'>
+  <div class='col-md-12'>
   <div class='post-header'>
     <h2 class='post-title'>{{post.title}}
       <div class='post-info'>
@@ -8,9 +10,20 @@
     </h2>
   </div>
 
-  <div class='post-content'>{{post.content}}</div>
-  <div class='post-content'>{{post.location}}</div>
-</div>
+  <div class='post-content'>
+    {{post.content}}
+  </div>
+
+  <div class='post-content'>
+    <table class='location-info'>
+      <tr>
+        <th>Location:</th>
+        <td>{{{post.location}}}</td>
+      </tr>
+    </table>
+  </div>
+
+
 
 <!-- Add spacing between the post and the comment form -->
 <div class='comment-form-container mt-4'>
@@ -42,6 +55,13 @@
     </div>
   {{/each}}
 </section>
-
+<!-- "Go Back" button to navigate back to the previous page -->
+  <div class="go-back-button">
+    <a href="javascript:history.go(-1);">Go Back</a>
+  </div>
+</div>
+</div>
+</div>
+</div>
 <!-- Add the script source for comment.js -->
 <script src='/js/comment.js'></script>

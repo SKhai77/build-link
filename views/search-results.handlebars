@@ -1,5 +1,5 @@
 <!-- views/search-results.handlebars -->
-<div class="container">
+<div class='container'>
   {{#if searchResults.length}}
     {{#each searchResults as |post|}}
       <div class='post-container'>
@@ -9,21 +9,39 @@
             <h2 class='post-title'>
               <a href='/post/{{post.id}}'>{{post.title}}</a>
               <div class='post-info'>
-                <span class='post-author'>Created by {{post.user.username}}</span>
-                <span class='post-date'>on {{format_date post.date_created}}</span>
+                <span class='post-author'>Posted by
+                  {{post.user.username}}</span>
+                <span class='post-date'>on
+                  {{format_date post.date_created}}</span>
               </div>
             </h2>
             <p class='post-content'>
               {{post.content}}
             </p>
-            <p class='post-location'>
-              {{post.location}}
-            </p>
           </div>
         </div>
       </div>
     {{/each}}
+
+    <!-- "Go Back" button to navigate back to the previous page -->
+  <div class="go-back-button">
+    <a href="javascript:history.go(-1);"><span>Go Back</span></a>
+  </div>
+
   {{else}}
-    <p>No results found.</p>
+    <h3>Your entered keyword search results are NOT found.</h3><br>
+    <h4>You can try the following options:</h4>
+    
+  <ul>
+    <li>Change your keyword or location.</li>
+    <li>click on the Search button with no keywords to see all the job posts.</li>
+    <li>Just click on the Job Listings menu.</li>
+  </ul>
   {{/if}}
+
+  <!-- "Go Back" button to navigate back to the previous page -->
+  <div class="go-back-button">
+    <a href="javascript:history.go(-1);">Go Back</a>
+  </div>
+
 </div>

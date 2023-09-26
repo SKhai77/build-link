@@ -1,3 +1,4 @@
+<div class="container">
 <div class="joblisting-container mt-5">
   <div class='col-md-12'>
 
@@ -22,6 +23,7 @@
 <div class="joblisting-container mt-5">
   <div class='col-md-12'>
     {{#each posts as |post|}}
+    {{!-- <div class='post-container p-4 border rounded mb-4'> --}}
       <div class='post-container'>
         <div class='row mb-4 post'>
           <div class='col-md-12'>
@@ -34,15 +36,19 @@
             </h2>
             <p class='post-content'>
               {{post.content}}
-            </p>
-            <p class='post-location'>
-              {{{location}}}
-            </p>
+            </p>            
           </div>
         </div>
       </div>
+    {{!-- </div> --}}
     {{/each}}
+<!-- "Go Back" button to navigate back to the previous page -->
+  <div class="go-back-button">
+    <a href="javascript:history.go(-1);">Go Back</a>
+  </div>
   </div>
 </div>
+</div>
+
 
 

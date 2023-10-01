@@ -230,5 +230,10 @@ router.get('/search', async (req, res) => {
   }
 });
 
+// Thank you route
+router.get('/thankyou', (req, res) => {
+  res.render('thankyou');
+});
+
 // Export the router
 module.exports = router;

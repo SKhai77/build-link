@@ -2,27 +2,27 @@ const express = require('express');
 const router = express.Router();
 
 // Import any required dependencies for handling form submissions and sending emails
-const bodyParser = require('body-parser'); // You may need to install this package if not already installed
-const nodemailer = require('nodemailer'); // For sending emails
+const bodyParser = require('body-parser');
+const nodemailer = require('nodemailer');
 
 // Define a route for handling contact form submissions
-router.post('/contact', (req, res) => {
+router.post('/', (req, res) => {
   // Extract data from the form submission
   const { name, email, message } = req.body;
 
-  // Configure nodemailer to send the email (you may need to set up your email transport here)
+  // Configure nodemailer to send the email
   const transporter = nodemailer.createTransport({
-    service: 'YourEmailServiceProvider', // e.g., 'Gmail'
+    service: 'hotmail',
     auth: {
-      user: 'your-email@example.com', // Your email address
-      pass: 'your-email-password', // Your email password or app password
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
     },
   });
 
   // Email configuration
   const mailOptions = {
-    from: 'your-email@example.com', // Sender's email address
-    to: 'recipient@example.com', // Recipient's email address
+    from: 'visitor', 
+    to: 'khaipi@hotmail.com',
     subject: 'New Contact Form Submission',
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };

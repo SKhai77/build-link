@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(response);
       if (response.ok) {
         // Redirect to the updated post page
-        alert('Message submitted');
+        alert('Message submitted. Thanks for reaching out to us!');
       } else {
         alert('Failed to update post');
       }

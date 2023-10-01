@@ -19,10 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
           'Content-Type': 'application/json',
         },
       });
-      console.log(response);
       if (response.ok) {
-        // Redirect to the updated post page
-        console.log('Message submitted');
+        // Redirect to thank you page
+        window.location.href = '/thankyou';
       } else {
         alert('Failed to update post');
       }

@@ -24,8 +24,11 @@ router.post('/', (req, res) => {
 
   // Email configuration
   const mailOptions = {
-    from: 'BuildLink Visitor',
-    to: 'khaipi@hotmail.com',
+    from: {
+      name: 'BuildLink Visitor',
+      email: process.env.EMAIL_USER,
+    },    
+    to: 'ikhaipi@gmail.com',
     subject: 'New Contact Form Submission',
     text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
   };
